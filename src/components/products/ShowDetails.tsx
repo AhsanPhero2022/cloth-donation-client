@@ -1,5 +1,8 @@
 import { useParams } from "react-router-dom";
-import { useCreateProductsMutation, useGetProductsQuery } from "../../pages/redux/features/product/prodductApi";
+import {
+  useCreateProductsMutation,
+  useGetProductsQuery,
+} from "../../pages/redux/features/product/prodductApi";
 
 import { DotWave } from "@uiball/loaders";
 import { toast } from "sonner";
@@ -13,27 +16,22 @@ const ShowDetails = () => {
   const { data, isLoading } = useGetProductsQuery("");
   const detailsData = useParams();
   const [amount, setAmount] = useState<number | string>(""); // State to hold the donated amount
-  const [donarInfoSave, {isSuccess}] = useCreateProductsMutation()
+  const [donarInfoSave, { isSuccess }] = useCreateProductsMutation();
 
-
-  // Method to handle donation submission
-  const handleDonation = async () => {
-    
-
-    try {
-
-  await  donarInfoSave(amount).unwrap()
-
+  console.log(amount);
   if (isSuccess) {
     toast.success("Thank you for the donation");
-  }             
-      
-    } catch (error) {
-      console.error("Error:", error);
-    }
-  };
-
+  }
  
+  const handleDonation = async () => {
+
+const donerInfo = {
+  amount : amount
+}
+
+
+    await donarInfoSave(donerInfo).unwrap();
+  };
 
   const singleData = data?.find((d: TParameter) => d._id == detailsData._id);
 
@@ -91,7 +89,10 @@ const ShowDetails = () => {
                 </div>
                 <div className="modal-action">
                   <form method="dialog">
-                    <button onClick={handleDonation} className="btn btn-success">
+                    <button
+                      onClick={handleDonation}
+                      className="btn btn-success"
+                    >
                       Submit
                     </button>
                   </form>
