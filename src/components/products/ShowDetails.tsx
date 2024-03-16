@@ -26,6 +26,8 @@ const ShowDetails = () => {
   const handleDonation = async () => {
 
 const donerInfo = {
+
+  name: "sharif",
   amount : amount
 }
 
