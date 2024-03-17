@@ -7,18 +7,31 @@ import {
 import { DotWave } from "@uiball/loaders";
 import { toast } from "sonner";
 import { useState } from "react";
+import { useAppSelector } from "../../pages/redux/hook";
+import { useCurrentUser } from "../../pages/redux/features/auth/authSlice";
 
 type TParameter = {
   _id: string;
 };
 
+interface CurrentUserState {
+  user: {
+    // Add the expected properties of user here
+    id: string;
+    name: string;
+    email: string;
+  } | null;
+}
+
 const ShowDetails = () => {
   const { data, isLoading } = useGetProductsQuery("");
   const detailsData = useParams();
-  const [amount, setAmount] = useState<number | string>(""); // State to hold the donated amount
+  const [amount, setAmount] = useState<number | string>(""); 
   const [donarInfoSave, { isSuccess }] = useCreateProductsMutation();
+const user = useAppSelector(useCurrentUser) as CurrentUserState
+  console.log(user.email);
 
-  console.log(amount);
+
   if (isSuccess) {
     toast.success("Thank you for the donation");
   }
