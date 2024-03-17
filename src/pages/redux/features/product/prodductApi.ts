@@ -11,6 +11,14 @@ export const productApi = baseApi.injectEndpoints({
       providesTags: ['products']
       
     }),
+    getDonar: builder.query({
+      query: () => ({
+        url: '/donar',
+      method: 'GET'
+      }),
+      providesTags: ['products']
+      
+    }),
 
     getSingleProduct: builder.query({
       query: (id)=> ({
@@ -26,6 +34,17 @@ export const productApi = baseApi.injectEndpoints({
       }),
       invalidatesTags: ['products']
     }),
+
+    createDonar: builder.mutation({
+      query: (body)=>({
+        url: '/donar',
+        method: "POST",
+        body
+      }),
+      invalidatesTags: ['products']
+    }),
+
+
     createUser: builder.mutation({
       query: (body) => ({
         url: '/api/v1/register',
@@ -69,6 +88,8 @@ export const {
   useCreateProductsMutation, 
   useDeleteProductsMutation, 
   useUpdateProductsMutation,
+  useCreateDonarMutation,
+  useGetDonarQuery
 
 } 
   = productApi

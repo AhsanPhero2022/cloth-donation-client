@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import {
-  useCreateProductsMutation,
+  useCreateDonarMutation,
+  
   useGetProductsQuery,
 } from "../../pages/redux/features/product/prodductApi";
 
@@ -15,21 +16,19 @@ type TParameter = {
 };
 
 interface CurrentUserState {
-  user: {
-    // Add the expected properties of user here
-    id: string;
+     id: string;
     name: string;
     email: string;
-  } | null;
+  
 }
 
 const ShowDetails = () => {
   const { data, isLoading } = useGetProductsQuery("");
   const detailsData = useParams();
   const [amount, setAmount] = useState<number | string>(""); 
-  const [donarInfoSave, { isSuccess }] = useCreateProductsMutation();
+  const [donarInfoSave, { isSuccess }] = useCreateDonarMutation();
 const user = useAppSelector(useCurrentUser) as CurrentUserState
-  console.log(user.email);
+
 
 
   if (isSuccess) {
@@ -39,8 +38,7 @@ const user = useAppSelector(useCurrentUser) as CurrentUserState
   const handleDonation = async () => {
 
 const donerInfo = {
-
-  name: "sharif",
+  email: user.email,
   amount : amount
 }
 
