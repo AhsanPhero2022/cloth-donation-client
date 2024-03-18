@@ -59,6 +59,14 @@ export const productApi = baseApi.injectEndpoints({
       }),
       invalidatesTags: ['products']
     }),
+    createVolunteer: builder.mutation({
+      query: (body)=>({
+        url: '/volunteer',
+        method: "POST",
+        body
+      }),
+      invalidatesTags: ['products']
+    }),
 
 
     createUser: builder.mutation({
@@ -107,7 +115,8 @@ export const {
   useCreateDonarMutation,
   useGetDonarQuery,
   useCreateTestimonialMutation,
-  useGetTestimonialQuery
+  useGetTestimonialQuery,
+  useCreateVolunteerMutation
 
 } 
   = productApi
