@@ -19,6 +19,14 @@ export const productApi = baseApi.injectEndpoints({
       providesTags: ['products']
       
     }),
+    getVolunteer: builder.query({
+      query: () => ({
+        url: '/volunteer',
+      method: 'GET'
+      }),
+      providesTags: ['products']
+      
+    }),
     getDonar: builder.query({
       query: () => ({
         url: '/donar',
@@ -116,7 +124,8 @@ export const {
   useGetDonarQuery,
   useCreateTestimonialMutation,
   useGetTestimonialQuery,
-  useCreateVolunteerMutation
+  useCreateVolunteerMutation,
+  useGetVolunteerQuery
 
 } 
   = productApi

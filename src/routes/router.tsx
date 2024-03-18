@@ -9,9 +9,11 @@ import CreateTestimonial from '../pages/dashboard/CreateTestimonial';
 import Dashboard from '../pages/dashboard/Dashboard';
 import LeaderBoard from '../pages/dashboard/LeaderBoard';
 import UpdateClothes from '../pages/dashboard/UpdateClothes';
+import AboutUs from '../pages/home/AboutUs';
 import Home from '../pages/home/Home';
 import Login from '../pages/register/Login';
 import Register from '../pages/register/Register';
+import CreateVolunteers from '../pages/volunteers/CreateVolunteers';
 import App from './../App';
 
 
@@ -34,6 +36,14 @@ import {createBrowserRouter} from "react-router-dom";
         {
           path: 'community',
           element: <GratitudePost/>
+        },
+        {
+          path: 'aboutUs',
+          element: <AboutUs/>
+        },
+        {
+          path: 'volunteer',
+          element: <CreateVolunteers/>
         },
         {
           path: 'login',

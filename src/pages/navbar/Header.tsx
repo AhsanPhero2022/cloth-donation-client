@@ -16,7 +16,7 @@ const Header = () => {
           </h1>
          
             <button className="cursor-pointer font-bold font-helvetica transition-all duration-200 px-4 py-2 rounded-full bg-yellow-400 border border-transparent flex items-center text-base hover:bg-yellow-300 active:transform-scale-95">
-            <NavLink to="/register">
+            <NavLink to="/volunteer">
               <span className="me-2">Join as a Virtual Volunteer  </span>
               </NavLink>
               <svg
