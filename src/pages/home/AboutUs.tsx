@@ -1,5 +1,11 @@
 import { useGetVolunteerQuery } from "../redux/features/product/prodductApi";
 
+interface Volunteer {
+    name: string;
+    location: string;
+    number: string;
+  }
+
 const AboutUs = () => {
   const { data, isLoading } = useGetVolunteerQuery("");
   if(isLoading){
@@ -7,9 +13,9 @@ const AboutUs = () => {
   }
   return (
     <div>
-      <div className="my-12">
-        {data?.map((item) => (
-          <div className="card w-96 bg-base-100 shadow-xl my-5">
+      <div className="my-12 grid lg:grid-cols-4 gap-4">
+        {data?.map((item: Volunteer) => (
+          <div className="card w-auto bg-base-100 shadow-xl my-5 ">
            
             <div className="card-body">
               <h2 className="card-title mx-auto my-4">{item.name}</h2>

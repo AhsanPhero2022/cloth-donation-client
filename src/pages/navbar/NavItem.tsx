@@ -33,13 +33,14 @@ const handleLogout = () =>{
       <li>
         <NavLink
         className='bg-yellow-500'
-        to='/winter-clothes'>All Clothes</NavLink>
+        to='/community'> Gratitude</NavLink>
       </li>
       <li>
         <NavLink
         className='bg-yellow-500'
-        to='/community'>All Gratitude</NavLink>
+        to='/winter-clothes'>All Clothes</NavLink>
       </li>
+     
      <li>
       <NavLink
       className='bg-yellow-500'
