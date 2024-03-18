@@ -11,6 +11,14 @@ export const productApi = baseApi.injectEndpoints({
       providesTags: ['products']
       
     }),
+    getTestimonial: builder.query({
+      query: () => ({
+        url: '/testimonial',
+      method: 'GET'
+      }),
+      providesTags: ['products']
+      
+    }),
     getDonar: builder.query({
       query: () => ({
         url: '/donar',
@@ -38,6 +46,14 @@ export const productApi = baseApi.injectEndpoints({
     createDonar: builder.mutation({
       query: (body)=>({
         url: '/donar',
+        method: "POST",
+        body
+      }),
+      invalidatesTags: ['products']
+    }),
+    createTestimonial: builder.mutation({
+      query: (body)=>({
+        url: '/testimonial',
         method: "POST",
         body
       }),
@@ -89,7 +105,9 @@ export const {
   useDeleteProductsMutation, 
   useUpdateProductsMutation,
   useCreateDonarMutation,
-  useGetDonarQuery
+  useGetDonarQuery,
+  useCreateTestimonialMutation,
+  useGetTestimonialQuery
 
 } 
   = productApi

@@ -1,44 +1,48 @@
 import { useForm, SubmitHandler } from "react-hook-form";
-import { useCreateProductsMutation } from "../../pages/redux/features/product/prodductApi";
+import { useCreateTestimonialMutation } from "../../pages/redux/features/product/prodductApi";
 import { toast } from "sonner";
 
 type Inputs = {
   image: string;
   title: string;
-  category: string;
-  size: string;
+ 
   description: string;
 };
 
 const CreateTestimonial = () => {
-  const [createProducts, { isSuccess }] = useCreateProductsMutation();
+  const [testimonial, { isSuccess }] = useCreateTestimonialMutation();
 
-  if (isSuccess) {
-    toast.success("Clothes Added");
-  }
+ 
   const { register, handleSubmit, reset } = useForm<Inputs>();
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
-    await createProducts(data).unwrap();
+    await testimonial(data).unwrap();
 
     reset();
+   
   };
 
+
+  if (isSuccess) {
+    toast.success("Testimonial Added");
+  }
+  
   return (
     <div className="bg-[#001529]  px-8 py-12 min-h-screen">
       <h1 className="text-3xl font-bold text-center my-12 text-white">
         Add a testimonial about the donation
       </h1>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <div className="lg:flex justify-evenly items-center gap-4 mb-8">
-          <div className="w-full">
+        <div className=" gap-4 mb-8">
+          <div className="w-1/2 mx-auto">
             <h2 className="text-white font-semibold my-3">Title</h2>
             <input
+            required
               placeholder="Enter Title"
               className="h-8 rounded-md w-full px-3"
               {...register("title")}
             />
           </div>
-          <div className="w-full">
+          <div className="w-1/2 mx-auto">
             <h2 className="text-white font-semibold my-3">Image</h2>
             <input
               placeholder="Photo url"
@@ -49,9 +53,10 @@ const CreateTestimonial = () => {
         </div>
         
 
-        <div className="w-full">
+        <div className="w-1/2 mx-auto">
           <h2 className="text-white font-semibold my-3">Description</h2>
           <input
+          required
             placeholder="Write description"
             className="h-16 rounded-md w-full px-3"
             {...register("description")}
