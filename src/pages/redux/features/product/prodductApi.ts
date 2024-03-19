@@ -35,6 +35,14 @@ export const productApi = baseApi.injectEndpoints({
       providesTags: ['products']
       
     }),
+    getPost: builder.query({
+      query: () => ({
+        url: '/post',
+      method: 'GET'
+      }),
+      providesTags: ['products']
+      
+    }),
 
     getSingleProduct: builder.query({
       query: (id)=> ({
@@ -85,6 +93,14 @@ export const productApi = baseApi.injectEndpoints({
       }),
       invalidatesTags: ['user']
     }),
+    createPost: builder.mutation({
+      query: (body) => ({
+        url: 'post',
+        method: "POST",
+        body,
+      }),
+      invalidatesTags: ['user']
+    }),
 
 
 
@@ -125,7 +141,9 @@ export const {
   useCreateTestimonialMutation,
   useGetTestimonialQuery,
   useCreateVolunteerMutation,
-  useGetVolunteerQuery
+  useGetVolunteerQuery,
+  useCreatePostMutation,
+  useGetPostQuery
 
 } 
   = productApi
