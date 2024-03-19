@@ -15,6 +15,7 @@ import  storage  from 'redux-persist/lib/storage';
 
 
 
+
 const persistConfig = {
   key: 'auth',
   storage,
@@ -27,7 +28,7 @@ export const store =  configureStore({
   reducer: {
     [baseApi.reducerPath]: baseApi.reducer,
     auth: persistedAuthReducer,
-   
+  
 
   },
   middleware: (getDefaultMiddlewares) =>

@@ -1,14 +1,17 @@
 import MainLayout from "./components/layout/MainLayout"
 
 
+
+
 function App() {
 
 
   return (
+
     <>
-     <div>
+     <div >
       <MainLayout/>
-     </div>
+      </div>
     </>
   )
 }
