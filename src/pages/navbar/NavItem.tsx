@@ -52,7 +52,7 @@ const NavItem = () => {
     </ul>
   );
 
-  const handleToggle = (e) => {
+  const handleToggle = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.checked) {
       setTheme("dark");
     } else {
@@ -61,8 +61,8 @@ const NavItem = () => {
   };
 
   useEffect(() => {
-    localStorage.setItem("theme", theme);
-    const localTheme = localStorage.getItem("theme");
+    localStorage.setItem("theme", theme as string);
+    const localTheme = localStorage.getItem("theme") || '';
     document.querySelector("html")?.setAttribute("data-theme", localTheme);
   }, [theme]);
 
