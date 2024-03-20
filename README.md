@@ -41,6 +41,5 @@ This project is licensed under the [MIT License](LICENSE).
 
 ## Live Link
 
-```
-- [Link:] (https://preeminent-treacle-57fedb.netlify.app/)
-```
+
+- [Link:] (https://preeminent-treacle-57fedb.netlify.app)
