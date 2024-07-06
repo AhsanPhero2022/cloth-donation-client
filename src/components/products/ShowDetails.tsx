@@ -1,7 +1,6 @@
 import { useParams } from "react-router-dom";
 import {
   useCreateDonarMutation,
-  
   useGetProductsQuery,
 } from "../../pages/redux/features/product/prodductApi";
 
@@ -10,38 +9,34 @@ import { toast } from "sonner";
 import { useState } from "react";
 import { useAppSelector } from "../../pages/redux/hook";
 import { useCurrentUser } from "../../pages/redux/features/auth/authSlice";
+import { Button } from "antd";
 
 type TParameter = {
   _id: string;
 };
 
 interface CurrentUserState {
-     id: string;
-    name: string;
-    email: string;
-  
+  id: string;
+  name: string;
+  email: string;
 }
 
 const ShowDetails = () => {
   const { data, isLoading } = useGetProductsQuery("");
   const detailsData = useParams();
-  const [amount, setAmount] = useState<number | string>(""); 
+  const [amount, setAmount] = useState<number | string>("");
   const [donarInfoSave, { isSuccess }] = useCreateDonarMutation();
-const user = useAppSelector(useCurrentUser) as CurrentUserState
-
-
+  const user = useAppSelector(useCurrentUser) as CurrentUserState;
 
   if (isSuccess) {
     toast.success("Thank you for the donation");
   }
- 
+
   const handleDonation = async () => {
-
-const donerInfo = {
-  email: user.email,
-  amount : amount
-}
-
+    const donerInfo = {
+      email: user.email,
+      amount: amount,
+    };
 
     await donarInfoSave(donerInfo).unwrap();
   };
@@ -68,16 +63,16 @@ const donerInfo = {
             <p>Size: {singleData.size}</p>
             <p>Description: {singleData.description}</p>
             <div className="card-actions justify-end">
-              <button
+              <Button
                 onClick={() =>
                   (
                     document.getElementById("my_modal_5") as HTMLDialogElement
                   )?.showModal()
                 }
-                className="btn btn-primary"
+                className="bg-yellow-400"
               >
                 Donate Now
-              </button>
+              </Button>
             </div>
             {/* modal start */}
 

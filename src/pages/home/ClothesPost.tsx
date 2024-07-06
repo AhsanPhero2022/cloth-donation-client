@@ -3,6 +3,7 @@ import { useGetProductsQuery } from "../redux/features/product/prodductApi";
 import { NavLink } from "react-router-dom";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { Button } from "antd";
 
 type TPost = {
   image: string;
@@ -41,7 +42,10 @@ const ClothesPost = () => {
         className="grid md:grid-cols-2 lg:grid-cols-3 gap-3 px-2 mx-auto"
       >
         {post?.map((item: TPost) => (
-          <div className="card w-96 bg-base-100 shadow-xl" key={item._id}>
+          <div
+            className="mx-auto card w-full bg-base-100 shadow-xl"
+            key={item._id}
+          >
             <figure>
               <img
                 className="w-full rounded-md h-80"
@@ -54,7 +58,12 @@ const ClothesPost = () => {
               <p>If a dog chews shoes whose shoes does he choose?</p>
               <div className="card-actions justify-end">
                 <NavLink to={`/showDetails/${item._id}`}>
-                  <button className="btn btn-warning">View Details</button>
+                  <Button
+                    type="primary"
+                    className="bg-yellow-400 text-gray-700"
+                  >
+                    View Details
+                  </Button>
                 </NavLink>
               </div>
             </div>
@@ -63,7 +72,9 @@ const ClothesPost = () => {
       </div>
       <div className="text-center my-12">
         <NavLink to="/winter-clothes">
-          <button className="btn btn-warning">See All Post</button>
+          <Button type="default" className="bg-yellow-400">
+            See All Post
+          </Button>
         </NavLink>
       </div>
     </div>

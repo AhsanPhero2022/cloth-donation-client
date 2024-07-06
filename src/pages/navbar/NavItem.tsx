@@ -3,6 +3,7 @@ import logo from "../../assets/headerLogo.png";
 import { logout, useCurrentToken } from "../redux/features/auth/authSlice";
 import { useAppDispatch, useAppSelector } from "../redux/hook";
 import { useEffect, useState } from "react";
+import { Button } from "antd";
 
 const NavItem = () => {
   const [theme, setTheme] = useState(
@@ -21,35 +22,31 @@ const NavItem = () => {
   };
 
   const items = (
-    <ul className="lg:flex items-center gap-4  text-black font-semibold ">
+    <div className="lg:flex items-center gap-4  text-black font-semibold ">
       <li>
-        <a className="bg-yellow-500" href="/">
+        <a className="" href="/">
           Home
         </a>
       </li>
+
       <li>
-        <NavLink className="bg-yellow-500" to="/aboutUs">
-          About Us
-        </NavLink>
-      </li>
-      <li>
-        <NavLink className="bg-yellow-500" to="/community">
-          {" "}
-          Gratitude
-        </NavLink>
-      </li>
-      <li>
-        <NavLink className="bg-yellow-500" to="/winter-clothes">
-          All Clothes
+        <NavLink className="" to="/aboutUs">
+          About
         </NavLink>
       </li>
 
       <li>
-        <NavLink className="bg-yellow-500" to="/dashboard">
-          Dashboard
-        </NavLink>
+        <NavLink to="/community">Gratitude</NavLink>
       </li>
-    </ul>
+
+      <li>
+        <NavLink to="/winter-clothes">All Clothes</NavLink>
+      </li>
+
+      <li>
+        <NavLink to="/dashboard">Dashboard</NavLink>
+      </li>
+    </div>
   );
 
   const handleToggle = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -62,7 +59,7 @@ const NavItem = () => {
 
   useEffect(() => {
     localStorage.setItem("theme", theme as string);
-    const localTheme = localStorage.getItem("theme") || '';
+    const localTheme = localStorage.getItem("theme") || "";
     document.querySelector("html")?.setAttribute("data-theme", localTheme);
   }, [theme]);
 
@@ -87,12 +84,12 @@ const NavItem = () => {
                 />
               </svg>
             </div>
-            <ul
+            <div
               tabIndex={0}
-              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+              className="menu  menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
             >
               {items}
-            </ul>
+            </div>
           </div>
           <div className="w-24">
             <img className="" src={logo} alt="" />
@@ -124,12 +121,12 @@ const NavItem = () => {
             </label>
           </div>
           {user ? (
-            <button className="btn btn-warning" onClick={handleLogout}>
+            <Button type="default" onClick={handleLogout}>
               Logout
-            </button>
+            </Button>
           ) : (
             <NavLink to="/login">
-              <button className="btn btn-warning">Login</button>
+              <Button type="default">Login</Button>
             </NavLink>
           )}
         </div>
