@@ -1,11 +1,12 @@
 # Project Name
+Cloth Donation
 
-This project is a [brief description of your project]. It utilizes React.tsx, Tailwind CSS, AOS, Hero Icons, React Hook Form, React Redux, RTK Query, React Slick, Redux Persist, SweetAlert, Day.js, Vite, and UI Boll Loader.
+It utilizes React.tsx, Tailwind CSS, AOS, Hero Icons, React Hook Form, React Redux, RTK Query, React Slick, Redux Persist, SweetAlert, Day.js, Vite, and UI Boll Loader.
 
 ## Features
 
-- Feature 1: [Brief description of feature 1]
-- Feature 2: [Brief description of feature 2]
+- Feature 1: User Authentication 
+- Feature 2: Dashboard
 - ...
 
 ## Technologies Used
